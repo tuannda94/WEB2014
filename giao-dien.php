@@ -20,8 +20,8 @@
             echo $btn_text;
         ?>
     </button>
-    <?php
-        echo $btn_text;
-    ?>
+        <?php
+            echo $btn_text;
+        ?>
 </body>
 </html>
