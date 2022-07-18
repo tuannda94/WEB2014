@@ -7,7 +7,7 @@
 // );
 // 1.1 Khởi tạo kết nối từ file db.php sau đó nhúng vào đây
 require_once('db.php');
-// 2. Thực hiện truy vấn sql
+// 2. Thực hiện viết truy vấn sql
 $sql = 'select * from nhan_vien';
 // 3. Nạp câu truy vấn vào kết nối
 $statement = $connect->prepare($sql);

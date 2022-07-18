@@ -6,7 +6,7 @@
     $statement = $connect->prepare($sql); // nạp
     $statement->execute(); // thực thi
     $phong_ban = $statement->fetchAll(); // nhận kq
-    var_dump($phong_ban);
+    // var_dump($phong_ban);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +19,9 @@
 </head>
 <body>
     <div class='container'>
+        <a href="form_phong_ban.php">
+            <button class='btn btn-info'>Tạo mới</button>
+        </a>
         <table class='table table-hover'>
             <thead>
                 <tr>
@@ -35,7 +38,10 @@
                         <td><?= $value['name'] ?></td>
                         <td><?= $value['description'] ?></td>
                         <td>
-                            <button class='btn btn-danger'>Xoá</button>
+                            <!-- 1 hình thức gửi yêu cầu qua method GET khác -->
+                            <a href="xoa_phong_ban.php?id=<?php echo $value['id'] ?>">
+                                <button class='btn btn-danger'>Xoá</button>
+                            </a>
                         </td>
                     </tr>
                 <?php endforeach ?>
