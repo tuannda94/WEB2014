@@ -5,7 +5,7 @@ require_once('db.php');
 // 2. Định nghĩa câu truy vấn
 $min = 1;
 // $sql = 'SELECT id,name,code,email FROM students WHERE id > ' . $min;
-$sql = "SELECT id,name,code,email FROM students WHERE id > $min";
+$sql = "SELECT id,name,code,email FROM students";
 // 3. Nạp truy vấn
 $statement = $connect->prepare($sql); // $connect trong file db.php
 // 4. Thực thi
@@ -42,7 +42,11 @@ $students = $statement->fetchAll(); // nếu lấy ra 1 bản ghi là fetch();
                         <td><?= $value['name'] ?></td>
                         <td><?= $value['code'] ?></td>
                         <td><?= $value['email'] ?></td>
-                        <td><button class='btn btn-danger'>Xoá</button></td>
+                        <td>
+                            <a href="xoa_sinh_vien.php?id=<?= $value['id'] ?>">
+                                <button class='btn btn-danger'>Xoá</button>
+                            </a>
+                        </td>
                     </tr>
                 <?php endforeach ?>
             </tbody>

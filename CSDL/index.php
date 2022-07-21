@@ -19,12 +19,16 @@ $subjects = $statement->fetchAll(); // lấy ra toàn bộ các bản ghi nhận
 
 // var_dump($subjects);
 ?>
+<a href="form_tao_mon_hoc.php">
+    <button>Tạo môn học</button>
+</a>
 <table>
     <thead>
         <tr>
             <th>ID</th>
             <th>Tên môn</th>
             <th>Mã môn</th>
+            <th>Hành động</th>
         </tr>
     </thead>
     <tbody>
@@ -33,6 +37,11 @@ $subjects = $statement->fetchAll(); // lấy ra toàn bộ các bản ghi nhận
                 <td><?= $subjects[$i]['id'] ?></td>
                 <td><?= $subjects[$i]['name'] ?></td>
                 <td><?= $subjects[$i]['code'] ?></td>
+                <td>
+                    <a href="xoa_mon_hoc.php?id=<?= $subjects[$i]['id'] ?>">
+                        <button>Xoá môn học</button>
+                    </a>
+                </td>
             </tr>
         <?php } ?>
 
