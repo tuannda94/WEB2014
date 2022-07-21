@@ -23,6 +23,10 @@
                 <label for="">Email</label>
                 <input type="email" name='email' class='form-control'>
             </div>
+            <div class='form-group'>
+                <label for="">Password</label>
+                <input type="password" name='password' class='form-control'>
+            </div>
             <div>
                 <button class='btn btn-success'>Gửi yêu cầu</button>
             </div>
