@@ -39,6 +39,9 @@
                         <td><?= $value['description'] ?></td>
                         <td>
                             <!-- 1 hình thức gửi yêu cầu qua method GET khác -->
+                            <a href="form_sua_phong_ban.php?id=<?php echo $value['id'] ?>">
+                                <button class='btn btn-warning'>Sửa</button>
+                            </a>
                             <a href="xoa_phong_ban.php?id=<?php echo $value['id'] ?>">
                                 <button class='btn btn-danger'>Xoá</button>
                             </a>
