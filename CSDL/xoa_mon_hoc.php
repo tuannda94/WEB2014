@@ -1,6 +1,7 @@
 <?php
 require_once('db.php');
-if (isset($_GET['id']) || $_GET['id'] == '') {
+// Nếu không tồn tại id hoặc giá trị id rỗng
+if (!isset($_GET['id']) || $_GET['id'] == '') {
     header('location: index.php');
 }
 $id = $_GET['id'];

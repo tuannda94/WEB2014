@@ -25,6 +25,9 @@ $students = $statement->fetchAll(); // nếu lấy ra 1 bản ghi là fetch();
 </head>
 <body>
     <div class='container'>
+        <a href="form_tao_sv.php">
+            <button class='btn btn-primary'>Tạo SV</button>
+        </a>
         <table class='table table-hover'>
             <thead>
                 <tr>
