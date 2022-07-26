@@ -46,6 +46,9 @@ $students = $statement->fetchAll(); // nếu lấy ra 1 bản ghi là fetch();
                         <td><?= $value['code'] ?></td>
                         <td><?= $value['email'] ?></td>
                         <td>
+                            <a href="form_sua_sv.php?id=<?= $value['id'] ?>">
+                                <button class='btn btn-warning'>Sửa</button>
+                            </a>
                             <a href="xoa_sinh_vien.php?id=<?= $value['id'] ?>">
                                 <button class='btn btn-danger'>Xoá</button>
                             </a>
