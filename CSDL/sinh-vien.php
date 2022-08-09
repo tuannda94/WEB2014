@@ -5,14 +5,19 @@ require_once('db.php');
 // 2. Định nghĩa câu truy vấn
 $min = 1;
 // $sql = 'SELECT id,name,code,email FROM students WHERE id > ' . $min;
-$sql = "SELECT id,name,code,email FROM students";
+// $sql = "SELECT id,name,code,email FROM students";
+$sql = "SELECT students.id,students.name,students.code,students.email,subjects.name as subject_name "
+    . "FROM students "
+    . "LEFT JOIN subjects ON students.subject_id = subjects.id";
 // 3. Nạp truy vấn
 $statement = $connect->prepare($sql); // $connect trong file db.php
 // 4. Thực thi
 $statement->execute();
 // 5. Lấy dữ liệu
 $students = $statement->fetchAll(); // nếu lấy ra 1 bản ghi là fetch();
+// echo '<pre>';
 // var_dump($students);
+// mảng kq gồm các phần tử, mỗi phần tử có các key: id, name, email, subject_name
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,6 +40,7 @@ $students = $statement->fetchAll(); // nếu lấy ra 1 bản ghi là fetch();
                     <th>Name</th>
                     <th>Code</th>
                     <th>Email</th>
+                    <th>Tên môn đang học</th>
                     <th>Hành động</th>
                 </tr>
             </thead>
@@ -45,6 +51,7 @@ $students = $statement->fetchAll(); // nếu lấy ra 1 bản ghi là fetch();
                         <td><?= $value['name'] ?></td>
                         <td><?= $value['code'] ?></td>
                         <td><?= $value['email'] ?></td>
+                        <td><?= $value['subject_name'] ?></td>
                         <td>
                             <a href="form_sua_sv.php?id=<?= $value['id'] ?>">
                                 <button class='btn btn-warning'>Sửa</button>
