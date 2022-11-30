@@ -1,14 +1,25 @@
 <?php
-    $users = [
-        [
-            'id' => 1,
-            'name' => 'Nguyen Van A'
-        ],
-        [
-            'id' => 2,
-            'name' => 'Nguyen Van B'
-        ],
-    ];
+    // 1. Kết nối PHP với CSDL MySQL
+    // 1. Khởi tạo kết nối
+    // 'loại_CSDL:host_lưu_trữ;dbname=tên_CSDL', tên đăng nhập, mật khẩu
+    $connect = new PDO(
+        'mysql:host=127.0.0.1;dbname=quan_ly_vat_nuoi;',
+        'root',
+        ''
+    );
+    // 2. Ngay sau khi đã có kết nối gán vào $connect
+    // Định nghĩa câu truy vấn
+    $sql = "SELECT * FROM pets";
+    // 3. Nạp câu truy vấn
+    $statement = $connect->prepare($sql);
+    // 4. Thực thi câu truy vấn
+    $statement->execute();
+    // 5. Lấy dữ liệu về sau khi thực thi
+    // 5.1 Nếu dữ liệu nhận về là 1 danh sách
+    $data = $statement->fetchAll();
+    // 5.2 Nếu dữ liệu nhận về là 1 bản ghi thì dùng fetch()
+    echo '<pre>';
+    var_dump($data);
 ?>
 <div>
     <div>
@@ -24,10 +35,10 @@
                 <th>Hành động</th>
             </tr></thead>
             <tbody>
-                <?php for ($i = 0; $i < count($users); $i++) {
-                    $id = $users[$i]['id'];
-                    $name = $users[$i]['name'];
-                    $url_chinh_sua = "chinh_sua.php?id=$id&name=$name";
+                <?php for ($i = 0; $i < count($data); $i++) {
+                    $id = $data[$i]['id'];
+                    $name = $data[$i]['name'];
+                    $url_chinh_sua = "chinh_sua.php?id=$id";
                     $url_xoa = "xoa.php?id=$id";
                 ?>
                     <tr>
