@@ -22,6 +22,7 @@
     var_dump($data);
 ?>
 <div>
+    <p><?= isset($_GET['thong_bao']) ? $_GET['thong_bao'] : '' ?></p>
     <div>
         <a href="tao_moi.php">
             <button>Tạo mới</button>
@@ -46,7 +47,7 @@
                         <td><?= $name ?></td>
                         <td>
                             <a href="<?= $url_chinh_sua ?>">Sửa</a>
-                            <a href="<?= $url_xoa ?>">Xoá</a>
+                            <a href="xoa.php?id=<?= $id ?>">Xoá</a>
                         </td>
                     </tr>
                 <?php } ?>
