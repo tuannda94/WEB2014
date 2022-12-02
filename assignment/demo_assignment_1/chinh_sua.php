@@ -1,6 +1,6 @@
 <?php
 // Dùng PHP lấy dữ liệu từ thẻ a qua method get, biến $_GET
-$id = isset($_GET['id']) ? $_GET['id'] : 0;
+$ma_vat_nuoi = isset($_GET['id']) ? $_GET['id'] : 0;
 // $name = isset($_GET['name']) ? $_GET['name'] : '';
 // Ngay sau khi lấy được $id
 // Truy vấn để lấy thông tin bản ghi có id = $id
@@ -10,7 +10,7 @@ $connect = new PDO(
     ''
 );
 // Viết truy vấn
-$sql = "SELECT * FROM pets WHERE id=$id";
+$sql = "SELECT * FROM pets WHERE id=$ma_vat_nuoi";
 // Nạp
 $statement = $connect->prepare($sql);
 // Thực thi
@@ -24,9 +24,15 @@ var_dump($mot_con_vat);
 // header('location: danh_sach.php');
 ?>
 
+<h1>Hiển thị thông tin vật nuôi</h1>
+<p>Mã vật nuôi: <?= $mot_con_vat['id']?></p>
+<p>Tên vật nuôi: <?= $mot_con_vat['name'] ?> </p>a
+
 <h1>Form chỉnh sửa</h1>
-<form action="">
-    <input name='id' value='<?= $id ?>' placeholder="ID">
+<form action="tnyc_chinh_sua.php" method="POST">
+    <input name='id' value='<?= $mot_con_vat['id'] ?>' placeholder="ID"
+        hidden
+    >
     <input name='name' value='<?= $mot_con_vat['name'] ?>' placeholder="Tên">
     <button>Cập nhật</button>
 </form>
