@@ -20,6 +20,13 @@ $statement->execute();
 $mot_con_vat = $statement->fetch();
 var_dump($mot_con_vat);
 
+// Lấy thêm ds loại từ CSDL để người dùng có thể chọn và thay loại khác
+$sql_loai = "SELECT * FROM types";
+$statement_loai = $connect->prepare($sql_loai);
+$statement_loai->execute();
+$ds_loai = $statement_loai->fetchAll();
+
+
 // Hàm này khi được gọi sẽ điều hướng quay về file được chỉ định
 // header('location: danh_sach.php');
 ?>
@@ -34,5 +41,12 @@ var_dump($mot_con_vat);
         hidden
     >
     <input name='name' value='<?= $mot_con_vat['name'] ?>' placeholder="Tên">
+
+    <select name="type_id" id="">
+        <?php foreach ($ds_loai as $key => $value) { ?>
+            <option value="<?= $value['id'] ?>"> <?= $value['name'] ?></option>
+        <?php } ?>
+    </select>
+
     <button>Cập nhật</button>
 </form>

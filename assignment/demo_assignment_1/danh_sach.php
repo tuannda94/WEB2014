@@ -9,7 +9,7 @@
     );
     // 2. Ngay sau khi đã có kết nối gán vào $connect
     // Định nghĩa câu truy vấn
-    $sql = "SELECT * FROM pets";
+    $sql = "SELECT pets.id,pets.name, types.name AS type_name FROM pets LEFT JOIN types ON pets.type_id = types.id";
     // 3. Nạp câu truy vấn
     $statement = $connect->prepare($sql);
     // 4. Thực thi câu truy vấn
@@ -33,6 +33,7 @@
             <thead><tr>
                 <th>ID</th>
                 <th>Tên</th>
+                <th>Tên loại</th>
                 <th>Hành động</th>
             </tr></thead>
             <tbody>
@@ -45,6 +46,7 @@
                     <tr>
                         <td><?= $id ?></td>
                         <td><?= $name ?></td>
+                        <td><?= $data[$i]['type_name'] ?></td>
                         <td>
                             <a href="<?= $url_chinh_sua ?>">Sửa</a>
                             <a href="xoa.php?id=<?= $id ?>">Xoá</a>

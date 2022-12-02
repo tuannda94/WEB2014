@@ -1,6 +1,6 @@
 <?php
 include 'connect.php'; // lấy biến $connect thực hiện truy vấn
-
+var_dump($_POST);die;
 $id_chinh_sua = isset($_POST['id']) ? $_POST['id'] : 0;
 $ten_chinh_sua = isset($_POST['name']) ? $_POST['name'] : '';
 
